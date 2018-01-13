@@ -9,18 +9,18 @@ This code will install matrix-synapse on your server & get an certificates from 
  - ansible >=2.0
 
 **Be mindful you need to set the variables before running the script; the variables are to be set in the defaults/main.yml file**
-    - Send anonymus stats report to help improve matrix code, VISIT: matrix.org
-        - reportStats: true/false
-    - The domain of server where you plan to set homeserver. (Eg: www.MY_AWESOME_WEBSITE.com)
-        - hostname: vagrant.box
-    - Email is required if you plan to use letsencrypt for https (secure) connection.
-        - email: YOUR_AWESOME@EMAIL.ID
-    - This is the matrix.conf file that would be send to the server
-        - matrixConfFileToSend: PATH/TO/MATRIX_CONF_FILE
-    - Amount of RAM matrix-synapse is allowed to use, Read more at https://github.com/matrix-org/synapse#help-synapse-eats-all-my-ram
-        - SynapseCacheFactor: INTEGER
-    - Set to `true` if you plan to allow users to register themselves using riot.im like clients, Set `false` otherwise.
-        - enableRegistration: true/false
+ - Send anonymus stats report to help improve matrix code, VISIT: matrix.org
+     - reportStats: true/false
+ - The domain of server where you plan to set homeserver. (Eg: www.MY_AWESOME_WEBSITE.com)
+     - hostname: vagrant.box
+ - Email is required if you plan to use letsencrypt for https (secure) connection.
+     - email: YOUR_AWESOME@EMAIL.ID
+ - This is the matrix.conf file that would be send to the server
+     - matrixConfFileToSend: PATH/TO/MATRIX_CONF_FILE
+ - Amount of RAM matrix-synapse is allowed to use, Read more at https://github.com/matrix-org/synapse#help-synapse-eats-all-my-ram
+     - SynapseCacheFactor: INTEGER
+ - Set to `true` if you plan to allow users to register themselves using riot.im like clients, Set `false` otherwise.
+     - enableRegistration: true/false
 
 **How to run:**
   1. Install Ansible
