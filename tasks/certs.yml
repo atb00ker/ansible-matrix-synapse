@@ -1,0 +1,10 @@
+---
+  - name: Get CA certificates
+    become: yes
+    shell: 'certbot certonly --standalone --installer nginx --email "{{ email }}" --domain "{{ hostname }}" --pre-hook "service nginx stop" --post-hook "service nginx start" --quiet --non-interactive'
+  - name: cronjob to renew certificates
+    become: yes
+    cron:
+      name: "Set certificate renew script"
+      job: 'certbot certonly --standalone --installer nginx --email "{{ email }}" --domain "{{ hostname }}" --pre-hook "service nginx stop" --post-hook "service nginx start" --quiet --non-interactive'
+      weekday: "0,3"
