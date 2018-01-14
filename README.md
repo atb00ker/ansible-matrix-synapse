@@ -15,8 +15,8 @@ This code will install matrix-synapse on your server & get an certificates from 
      - hostname: vagrant.box
  - Email is required if you plan to use letsencrypt for https (secure) connection.
      - email: YOUR_AWESOME@EMAIL.ID
- - This is the matrix.conf file that would be send to the server
-     - matrixConfFileToSend: PATH/TO/MATRIX_CONF_FILE
+ - This is the nginx configuration file that would be send to the server
+     - matrixConfFileToSend: PATH/TO/NGINX_CONF_FILE
  - Amount of RAM matrix-synapse is allowed to use, Read more at https://github.com/matrix-org/synapse#help-synapse-eats-all-my-ram
      - SynapseCacheFactor: INTEGER
  - Set to `true` if you plan to allow users to register themselves using riot.im like clients, Set `false` otherwise.
@@ -25,9 +25,10 @@ This code will install matrix-synapse on your server & get an certificates from 
 **How to run:**
   1. Install Ansible
   2. Add your server group in the inventory.
-  3. Change the `hosts` from `all` to the server group in which you want to install jitsi. (In file ansible-matrix-synapse/main.yaml) [optional; as per your Requirements]
-  4. Make sure you have set the variables you desire for installation. (In file ansible-matrix-synapse/defaults/main.yaml)
-  5. Run the following command (from inside the ansible-matrix-synapse folder): `ansible-playbook main.yaml --ask-become`
+  3. Change the `hosts` from `all` to the server group in which you want to install matrix-synapse. (In file ansible-matrix-synapse/main.yaml) [optional; as per your Requirements]
+  4. Change the `remote_user` from `root` to a user which is a sudoer. (In file ansible-matrix-synapse/main.yaml) [optional; as per your Requirements]
+  5. Make sure you have set the variables you desire for installation. (In file ansible-matrix-synapse/defaults/main.yaml)
+  6. Run the following command (from inside the ansible-matrix-synapse folder): `ansible-playbook main.yaml --ask-become`
 
 - Ansible: https://www.ansible.com
 - Matrix: https://matrix.org/

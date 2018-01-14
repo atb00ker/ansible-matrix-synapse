@@ -6,5 +6,5 @@
     become: yes
     cron:
       name: "Set certificate renew script"
-      job: 'certbot certonly --standalone --installer nginx --email "{{ email }}" --domain "{{ hostname }}" --pre-hook "service nginx stop" --post-hook "service nginx start" --quiet --non-interactive'
+      job: 'certbot renew --quiet --post-hook "systemctl reload nginx"'
       weekday: "0,3"

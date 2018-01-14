@@ -4,6 +4,6 @@
     hostname: vagrant.box # The domain of server where you plan to set homeserver. (Eg: www.MY_AWESOME_WEBSITE.com)
     email: YOUR.AWESOME_EMAIL.ID # Certbot requires an email ID. (For getting certificates and making a https connection)
 # Change these only if you are sure of what's going on here.
-    matrixConfFileToSend: files/matrix.conf # This is the matrix.conf file that would be send to the server
+    matrixConfFileToSend: files/nginx.conf # This is the nginx.conf file that would be send to the server
     SynapseCacheFactor: 0.2 # Read about it here: https://github.com/matrix-org/synapse#help-synapse-eats-all-my-ram
     enableRegistration: true # Set to `true` if you plan to allow users to register themselves using riot.im like clients, Set `false` otherwise.
