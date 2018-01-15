@@ -1,7 +1,18 @@
 ---
+  - name: Add certbot package achieve
+    apt_repository:
+      repo: 'ppa:certbot/certbot'
+  - include_tasks: apt_upgrade.yml
+  - name: Install certbot & requirements
+    apt:
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - software-properties-common
+      - python-certbot-nginx
   - name: Get CA certificates
     become: yes
-    shell: 'certbot certonly --standalone --installer nginx --email "{{ email }}" --domain "{{ hostname }}" --pre-hook "service nginx stop" --post-hook "service nginx start" --quiet --non-interactive'
+    shell: 'certbot certonly --standalone --installer nginx --email "{{ email }}" --domain "{{ hostname }}" --pre-hook "service nginx stop" --agree-tos --post-hook "service nginx start" --quiet --non-interactive'
   - name: cronjob to renew certificates
     become: yes
     cron:
