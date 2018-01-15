@@ -21,6 +21,8 @@ This code will install matrix-synapse on your server & get an certificates from 
      - SynapseCacheFactor: INTEGER
  - Set to `true` if you plan to allow users to register themselves using riot.im like clients, Set `false` otherwise.
      - enableRegistration: true/false
+ - You'll hit this port on your domain for your homeserver
+     - portForRiot: NUMBER [Valid port number]
 
 **How to run:**
   1. Install Ansible

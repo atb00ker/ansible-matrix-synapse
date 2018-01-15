@@ -14,9 +14,10 @@
       state: present
       line: "{{ item.line }}"
     with_items:
-      - {regexp: 'server_name my.site.com;', line: '    server_name {{ hostname }}'}
+      - {regexp: 'server_name my.site.com;', line: '    server_name {{ hostname }};'}
       - {regexp: 'ssl_certificate     /etc/letsencrypt/live/my.site.com/fullchain.pem;', line: '    ssl_certificate     /etc/letsencrypt/live/{{ hostname }}/fullchain.pem;'}
       - {regexp: 'ssl_certificate_key /etc/letsencrypt/live/my.site.com/privkey.pem;', line: '    ssl_certificate_key /etc/letsencrypt/live/{{ hostname }}/privkey.pem;'}
+      - {regexp: 'listen 443 ssl;', line: '    listen {{ portForRiot }} ssl;'}
     notify:
       - restart nginx
   - name: Clean sites-enabled/

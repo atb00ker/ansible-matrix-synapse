@@ -7,3 +7,4 @@
     matrixConfFileToSend: files/nginx.conf # This is the nginx.conf file that would be send to the server
     SynapseCacheFactor: 0.2 # Read about it here: https://github.com/matrix-org/synapse#help-synapse-eats-all-my-ram
     enableRegistration: true # Set to `true` if you plan to allow users to register themselves using riot.im like clients, Set `false` otherwise.
+    portForRiot: 443 # You'll hit this port on your domain for your homeserver
