@@ -1,0 +1,43 @@
+---
+- name: Add non-standard repositories
+  apt_repository:
+    repo: "{{ item }}"
+    state: present
+  with_items:
+    - deb http://ftp.debian.org/debian jessie-backports main
+    - deb https://matrix.org/packages/debian/ jessie main
+    - deb-src https://matrix.org/packages/debian/ jessie main
+
+- name: Add apt-key for jessie-backports
+  apt_key:
+    keyserver: pgpkeys.mit.edu
+    id: "{{ item }}"
+  with_items:
+    - 8B48AD6246925553
+    - 7638D0442B90D010
+
+- name: Add an apt signing key
+  apt_key:
+    url: https://matrix.org/packages/debian/repo-key.asc
+    state: present
+- include_tasks: apt_upgrade.yml
+
+- name: Install requirements
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - apt-transport-https
+    - lsof
+    - curl
+    - python
+    - python-pip
+
+- name: Install requirements from jessie-backports
+  apt:
+    name: "{{ item }}"
+    state: present
+    default_release: jessie-backports
+  with_items:
+    - certbot
+    - python-cffi

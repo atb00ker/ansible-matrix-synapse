@@ -1,0 +1,10 @@
+# Note: You need not change anything here, it is done automatically.
+database:
+    name: psycopg2
+    args:
+        user: {{ postgresUser }}
+        password: {{ postgresPassword }}
+        database: {{ postgresDatabase }}
+        host: {{ postgresHost }}
+        cp_min: 5
+        cp_max: 10

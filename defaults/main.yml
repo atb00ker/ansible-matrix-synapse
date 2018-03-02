@@ -4,7 +4,16 @@
     hostname: vagrant.box # The domain of server where you plan to set homeserver. (Eg: www.MY_AWESOME_WEBSITE.com)
     email: YOUR.AWESOME_EMAIL.ID # Certbot requires an email ID. (For getting certificates and making a https connection)
 # Change these only if you are sure of what's going on here.
-    matrixConfFileToSend: files/nginx.conf # This is the nginx.conf file that would be send to the server
-    SynapseCacheFactor: 0.2 # Read about it here: https://github.com/matrix-org/synapse#help-synapse-eats-all-my-ram
-    enableRegistration: true # Set to `true` if you plan to allow users to register themselves using riot.im like clients, Set `false` otherwise.
-    portForRiot: 443 # You'll hit this port on your domain for your homeserver
+    # PostgreSQL Settings
+    postgresEnable: false # Set this `true` if you want to use postgreSQL as your database management system and `false` if you plan to use SQLite
+    postgresConfig: true # Set this `true` if you want to setup postgreSQL on the same server and `false` if you have a different database server setup.
+    postgresHost: localhost # Host Address for your database
+    postgresUser: synapse_user # This will be the postgresSQL Role/User of your Database
+    postgresPassword: synapse_password # This will be the Password of your Role/User
+    postgresDatabase: synapse_clients # This will be the main database for matrix
+    postgresConfFile: database.yml.j2 # This is the settings file to enable postgreSQL
+    # Other Configurations
+    nginxConfFile: nginx.j2 # This is the nginx.conf file that would be send to the server
+    synapseCacheFactor: 0.2 # Read about it here: https://github.com/matrix-org/synapse#help-synapse-eats-all-my-ram
+    enableRegistration: true # Set to `true` if you plan to allow users to register themselves using riot.im like clients, Set `false` otherwise
+    portForClient: 443 # You'll hit this port on your domain for your homeserver

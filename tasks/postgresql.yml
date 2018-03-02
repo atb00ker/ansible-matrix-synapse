@@ -1,0 +1,36 @@
+---
+  - name: Install PostgreSQL
+    when: postgresConfig == true
+    apt:
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - postgresql
+      - libpq-dev
+      - python-psycopg2
+
+  - name: Create postgresSQL Role/User
+    when: postgresConfig == true
+    become: true
+    become_user: postgres
+    postgresql_user:
+      name: "{{ postgresUser }}"
+      password: "{{ postgresPassword }}"
+
+  - name: Create postgresSQL Database
+    when: postgresConfig == true
+    become: true
+    become_user: postgres
+    postgresql_db:
+      encoding: UTF-8
+      lc_collate: C
+      lc_ctype: C
+      template: template0
+      owner: "{{ postgresUser }}"
+      name: "{{ postgresDatabase }}"
+
+  - name: Configuration for PostgreSQL
+    template:
+      src: "{{ postgresConfFile }}"
+      dest: "/etc/matrix-synapse/conf.d/database.yaml"
+    notify: restart matrix-synapse

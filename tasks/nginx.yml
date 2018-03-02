@@ -1,0 +1,28 @@
+---
+  - name: Install Nginx
+    apt:
+      name: nginx
+      state: present
+
+  - name: Configuration for Nginx
+    template:
+      src: "{{ nginxConfFile }}"
+      dest: "/etc/nginx/sites-available/{{ hostname }}"
+    notify:
+      - restart nginx
+
+  - name: Clean sites-enabled/
+    file:
+      state: absent
+      path: "/etc/nginx/sites-enabled/{{ item }}"
+    with_items:
+      - "{{ hostname }}"
+      - default
+
+  - name: Link sites-available to sites-enabled
+    file:
+      src: "/etc/nginx/sites-available/{{ hostname }}"
+      dest: "/etc/nginx/sites-enabled/{{ hostname }}"
+      state: link
+    notify: restart nginx
+  - import_tasks: certs.yml
