@@ -1,4 +1,7 @@
 # ansible-matrix-synapse
+
+**NOTE: Unmaintain it, there are better solutions available now and official docker images are available as well.**
+
 This code will install matrix-synapse on your server & get an certificates from `letsencrypt.org` for your domain, and set a cron job to renew the certificates.
 Optionally, Install and setup postgresSQL with matrix-synapse.
 
@@ -34,11 +37,11 @@ Optionally, Install and setup postgresSQL with matrix-synapse.
 
   6. Run the following command (from inside the ansible-matrix-synapse folder): `ansible-playbook main.yaml --ask-become`
 
-**Tested:**  
+**Tested:**
 - Ubuntu Xenial (16.04)
 
 **Minimum Requirements:**
-- ansible >=2.0  
+- ansible >=2.0
 
 **References:**
 - Ansible: https://www.ansible.com

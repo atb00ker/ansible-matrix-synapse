@@ -12,7 +12,9 @@ galaxy_info:
         - xenial
 
   galaxy_tags:
-    - matrix-synapse
+    - matrix
+    - synapse
+    - web
     - riot
 
 dependencies: []

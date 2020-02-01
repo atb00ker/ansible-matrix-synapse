@@ -16,8 +16,8 @@
       value: "{{ item.value }}"
       vtype: "{{ item.vtype }}"
     with_items:
-      - {question: 'matrix-synapse/report-stats',value: '{{ reportStats }}',vtype: 'boolean' }
-      - {question: 'matrix-synapse/server-name',value: '{{ hostname }}',vtype: 'string' }
+      - {question: 'matrix-synapse/report-stats', value: '{{ reportStats }}', vtype: 'boolean' }
+      - {question: 'matrix-synapse/server-name', value: '{{ hostname }}', vtype: 'string' }
 
   - name: Install matrix-synapse
     apt:
